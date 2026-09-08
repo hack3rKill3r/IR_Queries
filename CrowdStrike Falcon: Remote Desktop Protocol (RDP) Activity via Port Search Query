@@ -1,0 +1,17 @@
+(ComputerName=*)
+(LPort=3389 OR RPort=3389)
+
+| table(
+    [
+        @timestamp,
+        #event_simpleName,
+        event_platform,
+        ComputerName,
+        ContextBaseFileName,
+        LocalIP,
+        LPort,
+        RemoteIP,
+        RPort
+    ],
+    limit=20000
+)
