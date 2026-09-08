@@ -1,0 +1,16 @@
+#event_simpleName=ProcessRollup2
+| table(
+    [
+        @timestamp,
+        ComputerName,
+        UserName,
+        ParentBaseFileName,
+        FileName,
+        FilePath,
+        CommandLine,
+        SHA256HashData,
+        TargetProcessId,
+        ParentProcessId
+    ],
+    limit=20000
+)
