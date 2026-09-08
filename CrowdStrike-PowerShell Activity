@@ -1,0 +1,28 @@
+#event_simpleName=ProcessRollup2
+FileName=/^powershell\.exe$/i
+| table(
+    [
+        @timestamp,
+        #event_simpleName,
+        event_platform,
+        CompanyName,
+        ComputerName,
+        UserName,
+        FileName,
+        ImageFileName,
+        ContextBaseFileName,
+        ParentBaseFileName,
+        GrandParentBaseFileName,
+        DomainName,
+        HostUrl,
+        ReferrerUrl,
+        CommandLine,
+        CommandHistory,
+        LocalIP,
+        LPort,
+        RemoteIP,
+        RPort,
+        SHA256HashData
+    ],
+    limit=20000
+)
