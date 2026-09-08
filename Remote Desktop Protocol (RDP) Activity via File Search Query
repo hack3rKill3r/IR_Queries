@@ -1,0 +1,22 @@
+UserName=*
+(FileName=mstsc.exe OR FileName=rdpclip.exe)
+
+| table(
+    [
+        @timestamp,
+        #event_simpleName,
+        ComputerName,
+        UserName,
+        FileName,
+        ImageFileName,
+        ContextBaseFileName,
+        FilePath,
+        CommandLine,
+        DomainName,
+        LocalAddressIP4,
+        LPort,
+        RPort,
+        SHA256HashData
+    ],
+    limit=20000
+)
