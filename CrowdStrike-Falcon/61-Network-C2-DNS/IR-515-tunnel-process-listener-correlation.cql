@@ -15,9 +15,9 @@ correlate(
     } include:[EventTime, aid, ComputerName, UserName, ImageFileName, CommandLine, TargetProcessId, SHA256HashData],
     listener: {
         #event_simpleName=NetworkListenIP4 aid=* ContextProcessId=*
+        | EventTime := @timestamp
         | aid <=> proc.aid
         | ContextProcessId <=> proc.TargetProcessId
-        | EventTime := @timestamp
     } include:[EventTime, LocalAddressIP4, LocalPort, ContextProcessId],
     sequence=true, within=1h
 )

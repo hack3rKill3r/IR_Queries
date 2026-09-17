@@ -16,9 +16,9 @@ correlate(
     } include:[EventTime, aid, ComputerName, UserName, ImageFileName, CommandLine, TargetProcessId, ParentProcessId, SHA256HashData],
     net: {
         #event_simpleName=NetworkConnectIP4 aid=* ContextProcessId=*
+        | EventTime := @timestamp
         | aid <=> proc.aid
         | ContextProcessId <=> proc.TargetProcessId
-        | EventTime := @timestamp
     } include:[EventTime, LocalAddressIP4, LocalPort, RemoteAddressIP4, RemotePort, Protocol, ContextProcessId],
     sequence=true, within=1h
 )

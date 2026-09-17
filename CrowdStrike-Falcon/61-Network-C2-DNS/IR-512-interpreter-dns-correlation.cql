@@ -15,9 +15,9 @@ correlate(
     } include:[EventTime, aid, ComputerName, UserName, ImageFileName, CommandLine, TargetProcessId, SHA256HashData],
     dns: {
         #event_simpleName=DnsRequest aid=* ContextProcessId=* DomainName=*
+        | EventTime := @timestamp
         | aid <=> proc.aid
         | ContextProcessId <=> proc.TargetProcessId
-        | EventTime := @timestamp
     } include:[EventTime, DomainName, ContextProcessId],
     sequence=true, within=1h
 )

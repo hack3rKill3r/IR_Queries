@@ -14,15 +14,15 @@ correlate(
     } include:[EventTime, aid, ComputerName, UserName, ImageFileName, CommandLine, TargetProcessId],
     listener: {
         #event_simpleName=NetworkListenIP4 aid=* ContextProcessId=*
+        | EventTime := @timestamp
         | aid <=> proc.aid
         | ContextProcessId <=> proc.TargetProcessId
-        | EventTime := @timestamp
     } include:[EventTime, LocalAddressIP4, LocalPort],
     net: {
         #event_simpleName=NetworkConnectIP4 aid=* ContextProcessId=*
+        | EventTime := @timestamp
         | aid <=> proc.aid
         | ContextProcessId <=> proc.TargetProcessId
-        | EventTime := @timestamp
     } include:[EventTime, LocalAddressIP4, LocalPort, RemoteAddressIP4, RemotePort],
     sequence=false, within=1h
 )
